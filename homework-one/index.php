@@ -149,8 +149,8 @@ style="padding: 20px"
     </pre>';
 
     define('SURNAME', 'Русак');
-    $name = 'Roman'; // не могу победить кириллицу
-    $patronymic = 'Sergeevich'; //не могу победить кириллицу
+    $name = 'Роман'; // не могу победить кириллицу
+    $patronymic = 'Сергеевич'; //не могу победить кириллицу
     $age = '26';
 
     function checkConst ($constName, $text) {
@@ -159,7 +159,7 @@ style="padding: 20px"
     }
     
     
-    echo checkConst('SURNAME', 'меня зовут ' . SURNAME . "( " . $name[0] . ' . ' . $patronymic[0] . ' )<br>' . "Мне {$age} лет");
+    echo checkConst('SURNAME', 'меня зовут ' . SURNAME . "( " . mb_substr($name, 0, 1) . ' . ' . mb_substr($patronymic, 0, 1) . ' )<br>' . "Мне {$age} лет");
     
     ?>
 
