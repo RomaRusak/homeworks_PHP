@@ -508,6 +508,78 @@
 
   <?php
 
+  // Дана строка с любыми символами. Для примера пусть будет '1234567890'.
+  // Нужно разбить эту строку в массив таким образом: array('1', '23', '456', '7890')
+  // и так далее пока символы в строке не закончатся.
+
+
+  echo $createTitle('Задача 15');
+
+  function task15(string $str): array
+  {
+
+    static $arr = [];
+    static $counter = 1;
+
+    if ($counter >= strlen($str)) {
+      $arr[] = $str;
+      return $arr;
+    }
+
+    $arr[] = strstr($str, $str[$counter], true);
+    $counter++;
+    return task15(substr($str, $counter - 1));
+  }
+
+  echo '<pre>';
+  print_r(task15('1234567890abcde'));
+  echo '</pre>';
+
+  echo '<hr>';
+
+
+  //   Найдите сумму элементов массива между двумя нулями (первым и
+  // последним нулями в массиве). Если двух нулей нет в массиве, то выведите
+  // ноль. В массиве может быть более 2х нулей. Пример массива:
+  // [48,9,0,4,21,2,1,0,8,84,76,8,4,13,2] или [1,8,0,13,76,8,7,0,22,0,2,3,2]
+
+
+  echo $createTitle('Задача 16');
+
+  function task16(array $arr): int
+  {
+
+    if (count(
+      array_filter($arr, function ($item) {
+        return $item === 0;
+      }, ARRAY_FILTER_USE_BOTH)
+    ) < 2) return 0;
+
+    $firt_null_index = array_search(0, $arr);
+    $second_null_index = null;
+
+    $i = count($arr) - 1;
+    
+    while (true) {
+      if ($arr[$i] === 0) {
+        $second_null_index = $i;
+        break;
+      }
+      $i--;
+    }
+
+    return array_sum(
+      array_filter($arr, function ($key) use ($firt_null_index, $second_null_index) {
+        return $key >= $firt_null_index && $key <= $second_null_index;
+      }, ARRAY_FILTER_USE_KEY)
+    );
+  }
+
+  echo task16([1, 8, 0, 13, 76, 8, 7, 10, 22, 0, 2, 3, 2]);
+
+  echo '<hr>';
+
+
   // Сделайте функцию, которая будет генерировать случайный цвет в hex
   // (dechex) формате (типа #ffffff).
 
