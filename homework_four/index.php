@@ -361,6 +361,16 @@
 
   echo '<hr>';
 
+  echo $createTitle('Задача 6');
+
+  $task6 = function() {
+   
+  };
+
+  $task6('2025-12-31');
+  
+  echo '<hr>';
+
   // Дана строка с буквами и цифрами, например, '1a2b3c4b5d6e7f8g9h0'.
   // Удалите из нее все цифры. То есть в нашем случае должна получится строка
   // 'abcbdefgh'.
@@ -475,7 +485,7 @@
 
   echo $createTitle('Задача 12');
 
-  function task12(array $arr): array
+  function task12(array $arr)
   {
 
     $without_duplicates = [];
@@ -494,6 +504,19 @@
     }
 
     return $without_duplicates;
+
+    // static $arr = [];
+    // static $counter = 0;
+    // $t = $arr[$counter];
+
+    // for ($i = $counter + 1; $i < count($arr); $i++) {
+    //   if ($arr[$i] === $t) break;
+    //   echo '+';
+    // }
+
+    // $counter++;
+    // if ($counter <= count($arr)) return task12($arr);
+    // return $arr;
   }
 
   echo '<pre>';
@@ -677,6 +700,195 @@
   }
 
   echo task18('332 441 550');
+
+  echo '<hr>';
+
+  echo '<h2 style="text-align:center; font-size: 2rem; text-transform: uppercase;"> Дополнительные задачи, которые сбросили 19.05.23 <h2>';
+
+
+  // Найти число с максимальной суммой цифр среди чисел: 56,987,103,9011,45.
+
+  echo $createTitle('Задача 2');
+
+  function task2_more(...$arr):int {
+
+  $getSum = fn($num) => array_sum((str_split($num)));
+
+  $max = $arr[0];
+
+  for ($i = 1; $i < count($arr); $i++) {
+      if ($getSum($arr[$i]) > $getSum($max)) $max = $arr[$i];
+  }
+
+  return $max;
+  }
+
+  echo task2_more(56,937,103,9011,45);
+
+  echo '<hr>';
+
+  //Посчитайте и выведете кол-во встречающихся чисел в строке “В 2018 году появился проект, объединяющий возможности Windows Forms (.NET Framework) и PHP 7. Его разработка медленными темпами ведётся и сейчас. На текущий момент в движке доступны практически все функции для ООП. Среда находится на стадии приватной разработки. К исполняемому файлу по умолчанию прилагается php7ts.dll.”
+
+  echo $createTitle('Задача 3');
+
+  function task3_more(string $string) {
+    preg_match_all('/\d/', $string, $matches);
+
+    return count($matches[0]);
+  }
+
+  echo task3_more('В 2018 году появился проект, объединяющий возможности Windows Forms (.NET Framework) и PHP 7. Его разработка медленными темпами ведётся и сейчас. На текущий момент в движке доступны практически все функции для ООП. Среда находится на стадии приватной разработки. К исполняемому файлу по умолчанию прилагается php7ts.dll.');
+  
+  echo '<hr>';
+
+
+  // Есть 2 массива: arr1 = [1,2,3,4,5,6,7,8] и arr2 = [5, 3, 6, 9, 11]. Напишите функцию, которая принимает 2 массива и возвращает массив элементов, которые есть в обоих массивах. 
+
+
+  echo $createTitle('Задача 4');
+
+  function task4_more(array $arr_one, array $arr_two):array {
+    return array_intersect($arr_one, $arr_two);
+  }
+
+  echo '<pre>';
+  print_r(task4_more([1,2,3,4,5,6,7,8], [5, 3, 6, 9, 11]));
+  echo '</pre>';
+  
+  echo '<hr>';
+
+  // Есть два массива с числовыми значениями одинаковой длины. Создайте третий массив с суммами элементов данных массивов. Например:  [12,4,0] + [8,7,6] = [20, 11, 6].
+
+  echo $createTitle('Задача 5');
+
+  function task5_more(array $arr_one, array $arr_two) {
+    if (count($arr_one) !== count($arr_two)) return 'массивы разной длины';
+
+    $arr_sum = [];
+
+    for ($i = 0; $i < count($arr_one); $i++) {
+      $arr_sum[] = $arr_one[$i] + $arr_two[$i];
+    }
+
+    return $arr_sum;
+  }
+
+  echo '<pre>';
+  print_r( task5_more([12,4,0], [8,7,6]));
+  echo '</pre>';
+  
+  echo '<hr>';
+
+
+  // Поменяйте местами максимальный и минимальных элементы в массиве.
+
+  echo $createTitle('Задача 6');
+
+  function task6_more(array $arr):array {
+   $max = max($arr);
+   $min = min($arr);
+
+   for ($i = 0; $i < count($arr); $i++) {
+      switch ($arr[$i]) {
+        case $max:
+          $arr[$i] = $min;
+        break;
+        case $min:
+          $arr[$i] = $max;
+        break;
+      }
+   }
+
+   return $arr;
+  }
+
+  echo '<pre>';
+  print_r(task6_more([1000,5,26,7,2,9,1,22,33,4,5]));
+  echo '</pre>';
+
+  echo '<hr>';
+
+  // Напишите функцию alpha_bet_order(str), которая возвращает переданную строку с буквами в алфавитном порядке. Пример строки: 'alphabetical'. Ожидаемый результат: 'aaabcehillpt'. Предположим, что символы пунктуации и цифры не включены в переданную строку.
+
+  echo $createTitle('Задача 7');
+
+  function alpha_bet_order(string $str) {
+    $str = str_split($str);
+    asort($str);
+    return implode('', $str);
+  }
+
+  echo alpha_bet_order('alphabetical');
+  
+  echo '<hr>';
+
+  // Напишите функцию find_longest_word(str), которая принимает строку в качестве параметра и находит самое длинное слово в строке.
+
+  echo $createTitle('Задача 8');
+
+  function find_longest_word(string $str):string {
+    preg_match_all('/\b\w+\b/um', $str, $matches);
+    
+    $max = $matches[0][0];
+
+    for ($i = 1; $i < count($matches[0]); $i++) {
+      if (mb_strlen($matches[0][$i]) > mb_strlen($max)) $max  = $matches[0][$i];
+    }
+
+    return $max;
+  }
+
+  echo find_longest_word('упрощающая настройку хранилища с настройками по умолчанию. Позволяет автоматически комбинировать отдельные частичные редукторы (slice reducers), добавлять промежуточные слои или');
+  
+  echo '<hr>';
+
+
+  // Создайте функцию "Калькулятор", calc(expression), которая должны уметь вычислять операции: сложение, вычитание, умножение, разность; между положительными целочисленными значениями. Математическое выражение должно передаваться через параметр expression в виде строки, например: "45+8", "4-23". Если параметр не передается, то нужно запросить выражение через input. Результат вычисления выведите через alert. Используйте регулярные выражения для "парсинг" (обработки) параметра).
+
+
+  echo $createTitle('Задача  11');
+
+  function task11_more($expression) {
+    preg_match('/[\+\-\*\/]/', $expression, $operator);
+    list($operator) = $operator;
+    $operandA = +strstr($expression, $operator, true);
+    $operandB = +substr($expression, mb_strpos($expression, $operator) + 1);
+    
+    switch ($operator) {
+      case '+':
+        return $operandA + $operandB;
+      case '-':
+        return $operandA - $operandB;
+      case '*':
+        return $operandA * $operandB;
+      case '/':
+        return round($operandA / $operandB, 2);
+    }
+  }
+
+  echo task11_more('25 / 61');
+
+  echo '<hr>';
+
+  // Напиши функцию, которая будет проверять любой объем текста на вхождение плохих (запрещенных) слов, и возвращать новый, прошедший цензуру, текст. Запрещенные слова нужно заменить на символы "#" в зависимости от длины слова. В функцию нужно передавать два параметра: текст, массив запрещенных слов.
+
+  echo $createTitle('Задача 12');
+
+  function task12_more(string $str, $bad_words) {
+    $arr = explode(' ', $str);
+
+    foreach($arr as &$word) {
+      
+      foreach($bad_words as $bad_word) {
+       if (mb_strpos($word, $bad_word) !== false) $word = preg_replace('/\w/u', '*', $word);
+      }
+      
+    }
+
+    return implode(' ', $arr);
+  };
+
+  echo task12_more('я блинский пошел в кино капец смотреть кино про Николая продуракковского', ['блин', 'капец', 'дурак']);
 
   echo '<hr>';
   ?>
