@@ -591,7 +591,7 @@ button:hover {
 }
 
 .appearance {
-  animation: init .7s;
+  animation: init 0.7s;
   animation-timing-function: ease-out;
 }
 
@@ -607,14 +607,14 @@ button:hover {
 }
 
 .sucess-validation-wrapper::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, .42);
+  background: rgba(0, 0, 0, 0.42);
 }
 
 .sucess-validation-content {
@@ -642,9 +642,62 @@ button:hover {
   font-weight: bold;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+
+.modal-background {
+  position: absolute;
+  height: 200px;
+  width: 600px;
+  z-index: 1051;
+  background-color: whitesmoke;
+  top: calc(50vh - 100px);
+  left: calc(50vw - 300px);
+  overflow: hidden;
+  border-radius: 30px;
+  border: 3px solid #333333;
+  box-sizing: border-box;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  animation: modalInit 1s;
+  animation-timing-function: ease-out;
+}
+
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-style: italic;
+  font-size: 13px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+@keyframes modalInit {
+  from {
+    top: 40vh;
+    opacity: 0;
+  }
+
+  to {
+    top: calc(50vh - 100px);
+    opacity: 1;
+  }
+}
+
 @keyframes init {
   from {
-      opacity: 0;
+    opacity: 0;
   }
 
   to {
