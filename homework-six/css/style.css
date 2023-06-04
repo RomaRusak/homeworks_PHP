@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Geologica', sans-serif;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 1px black;
+  box-sizing: border-box;
+}
+
+.wrapper {
+    min-height: 100vh;
+    margin-bottom: -100px;
+}
+
+.footer {
+    background-color: lightgreen;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer > ul {
+    columns: 3;
+    column-gap: 125px;
+    list-style: none;
+}
+
+.footer > ul a {
+    color: inherit;
+    text-decoration: none;
+    font-size: .9rem;
+}
+
+.header {
+    padding: 20px 0;
+    background-color: lightblue;
+}
+
+.header nav > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.header nav > ul a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main {
+    padding: 15px;
+}
+
+.main h1 {
+    text-align: center;
+}
+
+.main h1 + div {
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 30px;
+}
+
+.gallery-item {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    border: 3px solid red;
+    box-shadow: 2px 2px 4px black;
+}
+
+.gallery-item > img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
