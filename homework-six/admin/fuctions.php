@@ -1,4 +1,8 @@
 <?php
+
+require_once 'session/index.php';
+if (!isset($_SESSION['auth'])) header('Location: /admin/login');
+
 function getCurrentPath($newPath)
 {
 
@@ -78,3 +82,31 @@ function uploadFile() {
     $endPoint = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $name;
     move_uploaded_file($sandbox, $endPoint);
 }
+
+function validation($login, $password) {
+    if (strlen(trim($login)) <=3
+    || strlen(trim($password)) <= 3
+    ) return false;
+    return true;
+}
+
+function createDB(array $arr) {
+    if (count($arr) % 2 !== 0) return false;
+    $arr = array_values($arr);
+    $counter = 1;
+    $newArr = [];
+    for ($i = 0; $i < count($arr); $i++) {
+        if ($i % 2 === 0) {
+            $newArr["user$counter"] = [
+                'login' => $arr[$i],
+                'password' => password_hash($arr[$i + 1], PASSWORD_DEFAULT),
+            ];
+
+            $counter++;
+        }
+    }
+
+    return $newArr;
+}
+
+$redirect = fn() => header('Location: /admin/login/');

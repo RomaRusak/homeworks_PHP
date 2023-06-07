@@ -1,4 +1,9 @@
-<?php require_once './fuctions.php'; ?>
+<?php
+require_once './fuctions.php'; 
+
+require_once './session/index.php';
+if (!isset($_SESSION['auth'])) header('Location: /admin/login');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +26,33 @@
         form {
             margin-top: 25px;
         }
+
+        header {
+            background-color: lavender;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        header > a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0 15px;
+            letter-spacing: 1.1px;
+            text-shadow: 1px 1px 1px black;
+            transition: color .3 ease-in-out;
+        }
+
+        header >a:hover,
+        header >a:focus {
+            color: purple;
+        }
     </style>
+
+    <? require_once './logout/index.php'; ?>
+
     <div>
         <a class="return_withoust_save" href="/admin/">Вернуться назад без сохранения изменений</a>
     </div>

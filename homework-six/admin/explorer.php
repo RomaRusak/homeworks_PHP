@@ -1,9 +1,12 @@
 <?php
-    if (!empty($_GET)) {
+require_once './fuctions.php';
+
+require_once './session/index.php';
+if (!isset($_SESSION['auth'])) header('Location: /admin/login');
+
+if (!empty($_GET)) {
     header('location: ?');
 } 
-
-require_once './fuctions.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +19,35 @@ require_once './fuctions.php';
 </head>
 <body>
     <style>
+        header {
+            background-color: lavender;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        header > a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0 15px;
+            letter-spacing: 1.1px;
+            text-shadow: 1px 1px 1px black;
+            transition: color .3 ease-in-out;
+        }
+
+        header >a:hover,
+        header >a:focus {
+            color: purple;
+        }
+
         input[type="text"] {
             width: 25%;
         }
     </style>
+
+    <? require_once './logout/index.php'?>
  
     <form action="/admin/">
         <fieldset>

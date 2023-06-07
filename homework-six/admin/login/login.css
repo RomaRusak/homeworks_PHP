@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.login-wrapper {
+    position: absolute;
+    height: 50vh;
+    width: 40vw;
+    background-color: lightblue;
+    top: calc(50% - 25vh);
+    left: calc(50% - 20vw);
+    box-sizing: border-box;
+    border: 3px solid black;
+    box-shadow: 2px 2px 4px black;
+}
+
+.login-wrapper > form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-wrapper > form input {
+    padding: 5px;
+    border: 2px solid lightslategrey;
+    border-radius: 4px;
+}
+
+.login-wrapper > form input::placeholder {
+    text-align: center;
+}
+
+.login-wrapper > form button {
+    padding: 4px 20px;
+    border-radius: 4px;
+    border: 3px solid lightslategray;
+    cursor: pointer;
+}
