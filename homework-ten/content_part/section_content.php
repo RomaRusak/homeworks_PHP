@@ -5,7 +5,7 @@ require_once '../../backend/functions/functions.php';
 $category = $_GET['category'];
 $paginationSeparator = 3;
 
-$requestAllCategories = 'SELECT t1.title AS "TITLE", t1.content as "CONTENT", t1.code as "CODE" FROM posts as t1 JOIN categories as t2 ON t1.CATEGORY_ID = t2.id WHERE t2.CODE =' . '"' . $category . '"';
+$requestAllCategories = 'SELECT t1.title AS "TITLE", t1.content as "CONTENT", t1.code as "CODE", t2.name as "NAME" FROM posts as t1 JOIN categories as t2 ON t1.CATEGORY_ID = t2.id WHERE t2.CODE =' . '"' . $category . '"';
 $resultAllCategories = $mysqli->query($requestAllCategories);
 if ($resultAllCategories->num_rows) {
     $dataCategory = getDataFromBD($resultAllCategories);
