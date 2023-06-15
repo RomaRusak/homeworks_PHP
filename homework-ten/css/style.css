@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    text-shadow: 1px 1px 2px black;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: lightblue;
+    padding: 25px 40px;
+}
+
+.header nav > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+.header nav > ul a {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: lemonchiffon;
+}
+
+.wrapper {
+    min-height: calc(100vh - 100px);
+}
+
+.footer {
+    background-color: aqua;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1  {
+    text-align: center !important;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.articles-wrapper {
+    padding: 45px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.articles-last-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.articles-last-news h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.articles-last-news a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.last-news {
+    box-shadow: 4px 4px 12px black;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 35px;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .3s;
+}
+
+.last-news_category {
+    color: lightblue;
+    font-weight: 700;
+    font-size: 1.9rem;
+}
+
+.last-news:hover,
+.last-news:active,
+.last-news:focus {
+    background-color: lightgray;
+}
+
+.articles-categories {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.articles-categories-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.articles-categories-wrapper > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.articles-categories-wrapper .category-item {
+    padding: 10px 30px;
+    border: 2px solid black;
+    border-radius: 24px;
+    font-size: 1.6rem;
+    background-color: lightblue;
+    transition: all .3s;
+}
+
+.articles-categories-wrapper .category-item:hover,
+.articles-categories-wrapper .category-item:active,
+.articles-categories-wrapper .category-item:focus {
+    background-color: lightgray;
+}
+
+.categories-wrapper {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    min-height: 523px;
+}
+
+.category_link {
+    text-decoration: none;
+    color: inherit;
+    width: 75%;
+}
+
+.category-preview {
+    overflow: hidden;
+    max-height: 55px;
+    padding: 20px;
+    box-shadow: 4px 4px 8px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 45px;
+}
+
+.pagination-item {
+    padding: 5px 10px;
+    border: 2px solid black;
+    background-color: lemonchiffon;
+}
+
+.pagination-item a {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.detail-wrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-title {
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+
+.detail-author {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.detail-author .author-name,
+.detail-author .detail-category {
+    padding: 0 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.detail-content {
+    margin: 45px 0 45px 0;
+}
+
+.detail-content > p {
+    text-indent: 3rem;
+    text-align: justify;
+}
+
+.detail-content > p:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.detail-data {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end
+}
