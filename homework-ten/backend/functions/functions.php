@@ -30,3 +30,8 @@ function cutDate($date) {
     preg_match('/\d+-\d+-\d+/', $date, $newDate);
     return $newDate[0];
 }
+
+function cutURL($data, $patern) {
+    preg_match($patern, $data, $matches);
+    return $matches[1];
+}

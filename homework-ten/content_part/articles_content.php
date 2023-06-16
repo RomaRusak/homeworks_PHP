@@ -2,7 +2,7 @@
 require_once '../backend/connection.php';
 require_once '../backend/functions/functions.php';
 
-$requestLastNews = 'SELECT t1.TITLE, t1.DATE, t2.NAME, t1.CODE FROM posts as t1 JOIN categories as t2 ON t1.CATEGORY_ID = t2.ID  ORDER BY date DESC LIMIT 4;';
+$requestLastNews = 'SELECT t1.TITLE, t1.DATE, t2.NAME, t2.CODE as "CATEGORY", t1.CODE FROM posts as t1 JOIN categories as t2 ON t1.CATEGORY_ID = t2.ID  ORDER BY date DESC LIMIT 4;';
 $resultLastNews = $mysqli->query($requestLastNews);
 if ($resultLastNews->num_rows) $dataLastNews = getDataFromBD($resultLastNews);
 
@@ -18,7 +18,7 @@ if ($resultCategory->num_rows) $dataCategory = getDataFromBD($resultCategory);
             <h2 class="articles-categories_title">Категории</h2>
             <div class="articles-categories-wrapper">
                 <?  foreach($dataCategory as $item):?>
-                    <a href="<?="/articles/section?category={$item['CODE']}"; ?>">
+                    <a href="<?="/articles/{$item['CODE']}"; ?>">
                         <div class="category-item">
                             <p><?=$item['NAME']; ?></p>
                         </div>
@@ -29,7 +29,7 @@ if ($resultCategory->num_rows) $dataCategory = getDataFromBD($resultCategory);
         <div class="articles-last-news">
             <h2>Cамые последние новости</h2>
             <? foreach($dataLastNews as $item): ?>
-                <a href="<?="/articles/detail?page={$item['CODE']}" ?>">
+                <a href="<?="/articles/{$item['CATEGORY']}/{$item['CODE']}" ?>">
                     <div class="last-news">
                         <h3 class="last-news_title"><?=$item['TITLE']; ?></h3>
                         <div class="last-news_category">

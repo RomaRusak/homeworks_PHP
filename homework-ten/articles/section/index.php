@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php require_once '../../components/head.html'; ?>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="wrapper">

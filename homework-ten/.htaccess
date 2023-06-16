@@ -1,1 +1,6 @@
-#когда-нибудь тут будет настройка
+RewriteEngine On
+RewriteBase /
+RewriteRule ^css\/.* - [L]
+
+RewriteRule articles\/\w+[^\/]$ articles/section/index.php
+RewriteRule articles\/\w+\/\w+$ articles/detail/index.php
