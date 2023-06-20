@@ -2,7 +2,7 @@
 if (!empty($_GET['dec']) || !empty($_GET['inc'])) {
     header('location: ?');
 }
-$itemsInCart = json_decode($_COOKIE['myCart'], true);
+$itemsInCart = $_COOKIE['myCart'] ? json_decode($_COOKIE['myCart'], true) : [];
 
 require_once "../backend/connection.php";
 require_once "../backend/function.php";
@@ -14,23 +14,27 @@ if ($cart_result->num_rows) {
     $cart_data = getDataFromDB($cart_result);
 }
 
-$itemsInCart = array_map(function($item) use ($addRusName, $cart_data) {
-    $newArr = [];
+if (!empty($itemsInCart)) {
+    
+    $itemsInCart = array_map(function($item) use ($addRusName, $cart_data) {
+        $newArr = [];
+    
+        foreach($item as $key => $value) {
+            $newArr[$key] = $item[$key];
+        };
+    
+        $newArr['rusName'] = $addRusName($item['name'], $cart_data);
+    
+        return $newArr;
+    },$itemsInCart);
+    
+    $totalSumCounter = isset($_COOKIE['myCart']) 
+    ? array_reduce(json_decode($_COOKIE['myCart'], true), function($accum, $item) {
+         return $accum += $item['priceCounter'];
+    }, 0)
+    : 0;
+}
 
-    foreach($item as $key => $value) {
-        $newArr[$key] = $item[$key];
-    };
-
-    $newArr['rusName'] = $addRusName($item['name'], $cart_data);
-
-    return $newArr;
-},$itemsInCart);
-
-$totalSumCounter = isset($_COOKIE['myCart']) 
-? array_reduce(json_decode($_COOKIE['myCart'], true), function($accum, $item) {
-     return $accum += $item['priceCounter'];
-}, 0)
-: 0;
 
 // echo '<pre>';
 // var_dump($itemsInCart);
@@ -40,7 +44,7 @@ $totalSumCounter = isset($_COOKIE['myCart'])
 
 <div class="container">
     <div class="cart-content">
-        <? foreach($itemsInCart as $item): ?>
+        <?foreach($itemsInCart as $item): ?>
             <div class="cart-item">
                 <div class="cart-item-title">
                     <h3><?=$item['rusName']; ?></h3>
