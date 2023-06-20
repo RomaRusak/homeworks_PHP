@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: black;
+    box-sizing: border-box;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    min-height: calc(100vh - 100px);
+}
+
+.header {
+    padding: 25px;
+    background-color: lightgreen;
+    align-items: center;
+}
+
+.footer {
+    background-color: lightgreen;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    z-index: 100;
+    box-shadow: 0 2px 12px black;
+}
+
+.header > nav > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-list  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px whitesmoke;
+}
+
+.container {
+    padding: 45px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.catalog-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 35px;
+}
+
+.catalog-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: center;
+    grid-gap: 25px;
+}
+
+.catalog-card {
+    border: 2px solid black;
+    box-shadow: 5px 5px 8px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 15px;
+    gap: 20px;
+}
+
+.catalog-card > a {
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.card-img > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.price-bold {
+    font-weight: bold;
+}
+
+.button-add-to-card {
+    padding: 10px 15px;
+    border: 2px solid black;
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.cart-widget {
+    height: 100%;
+    padding: 5px 10px;
+    background-color: lightskyblue;
+    color: black;
+}
+
+.cart-widget-link {
+    text-decoration: none;
+}
+
+.catalog-category ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.catalog-category ul > li {
+    padding: 4px 8px;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: lightgray;
+    border-radius: 8px;
+}
+
+.catalog-category a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.cart-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-item {
+    width: 70%;
+    box-shadow: 4px 4px 8px black;
+    display: grid;
+    grid-template-columns: 300px 150px auto auto;
+    padding: 20px 40px;
+    grid-gap: 45px;
+    min-height: 120px;
+}
+
+.cart-item .cart-img-wrapper {
+    position: relative;
+}
+
+.cart-item .cart-img-wrapper > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.cart-item .cart-item-buttonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.counter-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter-wrapper > span {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: lightgray;
+    padding: 15px 25px;
+    border-radius: 15px;
+}
+
+.total-price-wrapper {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.total-price-wrapper > p {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.product-img-wrapper {
+    height: 350px;
+    width: 500px;
+    box-shadow: 5px 5px 12px black;
+    position: relative;
+}
+
+.product-img-wrapper > img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.product-description {
+    max-width: 65%;
+}
+
+.product-description > p {
+    text-align: justify;
+    text-indent: 2.8rem;
+}
